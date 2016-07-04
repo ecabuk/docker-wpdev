@@ -30,6 +30,7 @@ rm /tmp/composer-setup.php
 RUN apt-get update && apt-get -y install \
 build-essential \
 nodejs \
+git \
 woff-tools \
 fontforge \
 ruby ruby-dev \
