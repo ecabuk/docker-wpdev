@@ -12,7 +12,7 @@ groupmod -g $GROUP_ID www-data && \
 chown www-data.www-data /var/www
 
 # Add nodejs repo
-RUN curl -sL https://deb.nodesource.com/setup_4.x | bash -
+RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
 
 # Install WordPress
 RUN curl -sL http://wordpress.org/latest.tar.gz | tar xz -C /tmp && \
@@ -31,6 +31,7 @@ RUN apt-get update && apt-get -y install \
 build-essential \
 nodejs \
 git \
+gnupg \
 woff-tools \
 fontforge \
 ruby ruby-dev \
