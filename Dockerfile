@@ -17,7 +17,7 @@ build-essential \
 nodejs \
 git \
 gnupg \
-woff-tools \
+zlib1g-dev \
 fontforge \
 ruby ruby-dev \
 libcurl4-gnutls-dev \
@@ -59,6 +59,17 @@ RUN cat /tmp/xdebug.ini >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini &
 rm /tmp/xdebug.ini
 
 # Fontcustom
+RUN git clone https://github.com/bramstein/sfnt2woff-zopfli.git sfnt2woff-zopfli && \
+cd sfnt2woff-zopfli && \
+make && \
+mv sfnt2woff-zopfli /usr/local/bin/sfnt2woff && \
+cd -
+RUN git clone --recursive https://github.com/google/woff2.git && \
+cd woff2 && \
+make clean all && \
+mv woff2_compress /usr/local/bin/ && \
+mv woff2_decompress /usr/local/bin/ && \
+cd -
 RUN gem install fontcustom
 
 # npm globals
