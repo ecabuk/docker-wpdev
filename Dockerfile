@@ -67,19 +67,8 @@ RUN npm install -g gulp-cli bower
 # Clear apt meta`
 RUN rm -r /var/lib/apt/lists/*
 
-# Install Debug Proxy
-RUN curl -sL http://downloads.activestate.com/Komodo/releases/11.0.2/remotedebugging/Komodo-PHPRemoteDebugging-11.0.2-90813-linux-x86_64.tar.gz | tar xz -C /tmp && \
-mv /tmp/Komodo-PHPRemoteDebugging-11.0.2-90813-linux-x86_64 /opt/Komodo-PythonRemoteDebugging && \
-ln -s /opt/Komodo-PythonRemoteDebugging/pydbgpproxy /usr/bin/pydbgpproxy
-
 WORKDIR /var/www/html
 
 VOLUME ["/var/www"]
 
 EXPOSE 80 $DEBUG_PORT
-
-COPY entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh && \
-echo "pydbgpproxy -d 127.0.0.1:9000 -i 0.0.0.0:$DEBUG_PORT" >> /entrypoint.sh
-
-CMD ["/entrypoint.sh"]
