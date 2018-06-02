@@ -1,9 +1,8 @@
 FROM php:7.1-apache
-MAINTAINER Evrim Cabuk <ecabuk@ecabuk.net>
 
 ARG USER_ID=1000
 ARG GROUP_ID=1000
-ARG DEBUG_PORT=9001
+ARG DEBUG_PORT=9000
 ARG WP_INSTALL_DIR=/var/www/html
 
 # Change user
