@@ -1,5 +1,4 @@
 FROM php:7.1-apache
-MAINTAINER Evrim Cabuk <ecabuk@ecabuk.net>
 
 ARG USER_ID=1000
 ARG GROUP_ID=1000
